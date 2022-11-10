@@ -1,0 +1,45 @@
+.footer {
+background-color: white;
+color: #545454;
+padding-top: 30px;
+padding-bottom: 28px;
+transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-text_last,
+.footer-text_link {
+    color:#545454;
+}
+
+.footer-text_link:hover,
+.footer-text_link:focus {
+    color: #FF6B08;
+    transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-text_last {
+    margin: 0 2px;
+}
+
+.footer-text_link {
+    display: flex;
+    justify-content: center;
+    transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: underline;
+}
+
+.footer-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-text_icon {
+    margin: 0 10px;
+}
+
+
+
+

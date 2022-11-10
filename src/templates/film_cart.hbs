@@ -1,0 +1,20 @@
+{{#each this}}
+  <li class='collection__item'>
+    <a href='' class='card__link' id='{{id}}'>
+      <div class='img__wrap'>
+        <img
+          src='{{poster_path}}'
+          alt='poster path of {{title}}'
+          class='card__img'
+          loading='lazy'
+        />
+      </div>
+      <b class='cart__title'>{{title}}</b>
+      <div class='cart__wrap'>
+        <p class='cart__genres'>{{genre_ids}}&nbsp;|&nbsp;</p>
+        <p class='cart__year'>{{release_date}}</p>
+
+      </div>
+    </a>
+  </li>
+{{/each}}

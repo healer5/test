@@ -1,0 +1,22 @@
+body {
+  background-color: white;
+  color: $main-text-color;
+  font-family: $mainFont;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: $mobile;
+
+  @include tablet {
+    padding-left: 32px;
+    padding-right: 32px;
+    width: $tablet;
+  }
+  @include desktop {
+    width: $desktop;
+  }
+}

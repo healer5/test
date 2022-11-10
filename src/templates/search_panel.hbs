@@ -1,0 +1,16 @@
+{{#each this}}
+  <li class='search-form-list__item'>
+    <div class='search-form-list__thumb'>
+      <img
+        src='{{poster_path}}'
+        alt='poster path of {{title}}'
+        loading='lazy'
+      />
+
+    </div>
+    <div class='search-form-list__info'>
+      <h3>{{title}}</h3>
+      <p>{{release_date}}</p>
+    </div>
+  </li>
+{{/each}}

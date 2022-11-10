@@ -1,0 +1,61 @@
+<header class="header">
+ <section class="header__section">
+  <div class="container">
+          <div class="header__nav-wrap">
+        <a href="./index.html" class="header__logo-link link">
+          <svg width="24" height="24" class="header__logo">
+            <use href="./images/sprite.svg#icon-logo"></use>
+          </svg>
+          <span class="header__logo-text">Filmoteka</span>
+        </a>
+        <h1 class="visually-hidden">Filmoteka</h1>
+        
+        <ul class="header__nav-list list">
+          <li class="header__nav-item">
+            <a href="#" id="home" class="header__nav-link link header__nav-link--active">home</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="./library.html" id="library" class="header__nav-link link">my library</a>
+          </li>
+        </ul>
+      </div>
+      <form class="header__search-form">
+        <input class="js-search-input" type="text" name="search" placeholder="Movie search" />
+    				<button type ="submit" class="header__form-submit-btn" disabled>
+          <svg width="17" height="17" class="header__logo">
+            <use href="./images/sprite.svg#icon-search-2"></use>
+          </svg>
+        </button>
+				   <ul class="search-form-list"></ul>
+      </form>
+      <div class="header__bg">
+        <p class="header__light">Light</p>
+        <div class="header__switch">
+          <label class="switch" for="switch">
+            <input id="switch" type="checkbox" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <p class="header__dark">Dark</p>
+      </div>
+
+    
+				 <div class="header-library__btn-list visually-hidden" >
+            <button class="header-library__btn"  id="watched" name="button" type="button">Watched</button>
+            <button class="header-library__btn" id="queue" name="button" type="button">Queue</button>
+      
+  
+</div>
+<div class="header_button-container">
+  <button type="button" class="header_button-leng" id="en_btn"><svg width="25" height="25"> <use href="./images/symbol-defs.svg#icon-united"></use></svg><button>
+  <button type="button" class="header_button-leng" id="ua_btn"><svg width="25" height="25"> <use href="./images/symbol-defs.svg#icon-ukraine"></use></svg></button></div>
+<div class="movie js-genre-filter"></div>
+
+<div class="movie js-genre-filter container"></div>
+    </section>
+		
+  </div>
+</header>
+
+
+

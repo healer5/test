@@ -1,0 +1,18 @@
+@import './base/common';
+@import './utils/variables';
+@import './utils/mixins';
+@import './base/reset';
+@import './base/container';
+
+@import './utils/visually-hidden';
+@import './utils/pagination';
+@import './layouts/home_header';
+@import './example';
+@import './layouts/films';
+@import './layouts/footer';
+@import './layouts/footer_modal';
+@import './layouts/film__modal';
+@import './layouts/library_header';
+@import './layouts/filter_genres';
+@import './layouts/scrollToTop';
+@import './layouts/slider';
