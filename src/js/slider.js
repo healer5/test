@@ -40,11 +40,12 @@ async function render(data) {
 }
 
 const glide = new Glide('.glide', {
-  type: 'slider',
+  type: 'carousel',
   startAt: 0,
-  perView: 8,
-  autoplay: 5000,
-  animationDuration: 2000,
+  perView: 10,
+  autoplay: 1500,
+  // animationDuration: 2000,
+  gap: 10,
   hoverpause: true,
   bound: true,
   breakpoints: {
