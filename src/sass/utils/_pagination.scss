@@ -14,22 +14,30 @@
 
   .pagination-button:not(:last-child),
   .dots {
-    margin-right: 16px;
+    margin-right: 1px;
   }
 
   .pagination-button {
+    cursor: pointer;
     padding: 10px 5px;
     background-color: $mainBg-color;
-    border: none;
     color: $main-text-color;
-    cursor: pointer;
+    border: transparent;
+    border-radius: 5px;
     font-family: Roboto;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-    // width: 40px;
+    width: 40px;
     // height: 40px;
+    transition: background-color, border, color 250ms cubic-bezier(0.4, 0, 0.2, 1);  
   }
+
+  .pagination-button:hover{
+    background-color: #F7F7F7;
+    border: 2px solid $accentBg-color;
+    color: $main-text-color;
+  } 
 
   .pagination--current {
     width: 40px;
@@ -61,10 +69,14 @@
 
   .arrow-left {
     background-image: url("../images/arrow-left.svg");
+    &:first-child {
+      margin-right: 5px;
+    }
   }
-
+  
   .arrow-right {
     background-image: url("../images/arrow-right.svg");
+    margin-left: 5px;
   }
 
   // .icon-arrow-right {

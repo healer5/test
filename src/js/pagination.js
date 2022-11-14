@@ -1,9 +1,10 @@
-import FilmApiService from './movie_database_api';
-import { renderList } from './render_movie_list';
-import transformObj from './transformObject';
+// import FilmApiService from './movie_database_api';
+// import { renderList } from './render_movie_list';
+// import transformObj from './transformObject';
 
-const apiRequest = new FilmApiService();
-// const lang = localStorage.getItem('language');
+// const apiRequest = new FilmApiService();
+// const fetchFunctions = apiRequest.fetchMoviesWithGenre.bind(apiRequest);
+// // const lang = localStorage.getItem('language');
 
 const btn1Ref = document.querySelector('[data-index="1"]');
 const btn2Ref = document.querySelector('[data-index="2"]');
@@ -12,7 +13,6 @@ const btn4Ref = document.querySelector('[data-index="4"]');
 const btn5Ref = document.querySelector('[data-index="5"]');
 const firstPageRef = document.querySelector('.first-button');
 const lastPageRef = document.querySelector('.last-button');
-const paginationRef = document.querySelector('.pagination-container');
 const rightArrowRef = document.querySelector('.arrow-right');
 const leftArrowRef = document.querySelector('.arrow-left');
 const prevDotsRef = document.querySelector('#previous');
@@ -20,127 +20,107 @@ const afterDotsRef = document.querySelector('#after');
 
 const gallery = document.querySelector('.collection');
 
-paginationRef.addEventListener('click', onPaginationClick);
+let currentPage = 1,
+  maxPage = 100,
+  neighbourPagesCount = 2 // количество оторажаемых соседних номеров. для значение 1 номера будут выглядеть "1 ... 6 7 8 ... 96", для значения 2 "1 ... 5 6 7 8 9 ... 96";
 
-let currentPage = 1;
+btn1Ref.addEventListener('click', onBtnClick);
+btn2Ref.addEventListener('click', onBtnClick);
+btn3Ref.addEventListener('click', onBtnClick);
+btn4Ref.addEventListener('click', onBtnClick);
+btn5Ref.addEventListener('click', onBtnClick);
+
+firstPageRef.addEventListener('click', function () {
+  currentPage = 1;
+  render(currentPage);
+});
+
+lastPageRef.addEventListener('click', function () {
+  currentPage = maxPage;
+  render(currentPage);
+});
+
+rightArrowRef.addEventListener('click', function () {
+  currentPage += 1;
+  render(currentPage);
+});
+
+leftArrowRef.addEventListener('click', function () {
+  currentPage -= 1;
+  render(currentPage);
+});
+
+function onBtnClick(event) {
+  currentPage = Number(event.target.textContent);
+  render(currentPage);
+}
 
 function firstPage() {
   currentPage = 1;
-  btn1Ref.textContent = 1;
-  btn2Ref.textContent = 2;
-  btn3Ref.textContent = 3;
-  btn4Ref.textContent = 4;
-  btn5Ref.textContent = 5;
-  leftArrowRef.hidden = true;
-  prevDotsRef.hidden = true;
-  firstPageRef.hidden = true;
-  btn1Ref.classList.add('pagination--current');
-  btn2Ref.classList.remove('pagination--current');
-  btn3Ref.classList.remove('pagination--current');
-  btn4Ref.classList.remove('pagination--current');
-  btn5Ref.classList.remove('pagination--current');
+  render(currentPage);
 }
 
 let btns = document.querySelectorAll('.pagination-button');
 
-prevDotsRef.hidden = true;
-leftArrowRef.hidden = true;
-firstPageRef.hidden = true;
+function render(pageNumber) {
+  let
+    // Определяем номер наименьшей страницы в списке страниц. Он должен быть меньше номера текущей страницы
+    // на neighbourPagesCount, но не меньше 1
+    startPage = Math.max(1, pageNumber - neighbourPagesCount),
 
-function onPaginationClick(event) {
-  if (event.target.tagName === 'BUTTON') {
-    if (Number(event.target.textContent)) {
-      currentPage = Number(event.target.textContent);
+    pagesList = []
+  ;
 
-      // console.log('currentPage: ', currentPage, apiRequest.pageNumber);
-    }
-
-    prevDotsRef.hidden = true;
-    afterDotsRef.hidden = true;
-
-    if (event.target.classList.contains('pagination-button')) {
-      btns.forEach(el => el.classList.remove('pagination--current'));
-      event.target.classList.add('pagination--current');
-    }
-
-    if (event.target.classList.contains('arrow-right') && currentPage < 1000) {
-      btns.forEach(el => el.classList.remove('pagination--current'));
-      btn1Ref.classList.add('pagination--current');
-      btn1Ref.textContent = Number(btn1Ref.textContent) + 5;
-      btn2Ref.textContent = Number(btn2Ref.textContent) + 5;
-      btn3Ref.textContent = Number(btn3Ref.textContent) + 5;
-      btn4Ref.textContent = Number(btn4Ref.textContent) + 5;
-      btn5Ref.textContent = Number(btn5Ref.textContent) + 5;
-      currentPage = btn1Ref.textContent;
-    }
-
-    if (event.target.classList.contains('arrow-left') && currentPage >= 5) {
-      btns.forEach(el => el.classList.remove('pagination--current'));
-      btn1Ref.textContent = Number(btn1Ref.textContent) - 5;
-      btn2Ref.textContent = Number(btn2Ref.textContent) - 5;
-      btn3Ref.textContent = Number(btn3Ref.textContent) - 5;
-      btn4Ref.textContent = Number(btn4Ref.textContent) - 5;
-      btn5Ref.textContent = Number(btn5Ref.textContent) - 5;
-      btn5Ref.classList.add('pagination--current');
-      currentPage = btn5Ref.textContent;
-    }
-
-    if (event.target.classList.contains('first-button')) {
-      btns.forEach(el => el.classList.remove('pagination--current'));
-      btn1Ref.textContent = 1;
-      btn2Ref.textContent = 2;
-      btn3Ref.textContent = 3;
-      btn4Ref.textContent = 4;
-      btn5Ref.textContent = 5;
-      btn1Ref.classList.add('pagination--current');
-      currentPage = btn1Ref.textContent;
-      leftArrowRef.hidden = true;
-      prevDotsRef.hidden = true;
-      firstPageRef.hidden = true;
-    }
-
-    if (event.target.classList.contains('last-button')) {
-      btns.forEach(el => el.classList.remove('pagination--current'));
-      btn1Ref.textContent = Number(lastPageRef.textContent) - 4;
-      btn2Ref.textContent = Number(lastPageRef.textContent) - 3;
-      btn3Ref.textContent = Number(lastPageRef.textContent) - 2;
-      btn4Ref.textContent = Number(lastPageRef.textContent) - 1;
-      btn5Ref.textContent = lastPageRef.textContent;
-      btn5Ref.classList.add('pagination--current');
-      currentPage = btn5Ref.textContent;
-      rightArrowRef.hidden = true;
-      afterDotsRef.hidden = true;
-      lastPageRef.hidden = true;
-    }
-
-    if (Number(currentPage) > 5) {
-      leftArrowRef.hidden = false;
-      prevDotsRef.hidden = false;
-      firstPageRef.hidden = false;
-    } else {
-      leftArrowRef.hidden = true;
-      prevDotsRef.hidden = true;
-      firstPageRef.hidden = true;
-    }
-
-    if (Number(currentPage) < 996) {
-      rightArrowRef.hidden = false;
-      afterDotsRef.hidden = false;
-      lastPageRef.hidden = false;
-    }
+  //Проверяем, чтобы startPage был не больше допустимого предела. для neighbourPagesCount = 2 и maxPage это значение должно быть 92
+  if (startPage + neighbourPagesCount * 2 > maxPage) {
+    startPage = maxPage - neighbourPagesCount * 2;
   }
-  gallery.innerHTML = '';
-  // const funct = apiRequest.fetchTrendingMovies();
-  const lang = localStorage.getItem('language');
-  apiRequest.pageNumber = currentPage;
-  apiRequest.fetchTrendingMovies().then(res => {
-    // console.log('Pagination', res);
-    renderList(transformObj(res, lang));
+
+  //Заполняем список отображаемых страниц
+  for (let i = startPage; i < startPage + 5; ++i) {
+    pagesList.push(i);
+  }
+  console.log(pagesList);
+
+  btn1Ref.textContent = pagesList[0];
+  btn2Ref.textContent = pagesList[1];
+  btn3Ref.textContent = pagesList[2];
+  btn4Ref.textContent = pagesList[3];
+  btn5Ref.textContent = pagesList[4];
+
+  leftArrowRef.hidden = pageNumber <= 1; //Скрывать левую стрелку, если номер текущей страницы 1 или меньше
+  rightArrowRef.hidden = pageNumber >= maxPage; //Скрывать правую стрелку, если номер текущей страницы больше или равен максимальной страницы
+
+  prevDotsRef.hidden = pageNumber <= neighbourPagesCount + 1; //Скрывать левое троеточие, пока номер страницы не превысит neighbourPagesCount
+  firstPageRef.hidden = prevDotsRef.hidden //Условие для ссылки на первую страницу такое же, как и для prevDotsRef.hidden. Нет троеточия - нет смысла отображать ссылку на первую страницу
+
+  afterDotsRef.hidden = pageNumber >= maxPage - neighbourPagesCount //Скрываем правое троеточие, когда мы находимся на странице 94, 95 или 96;
+  lastPageRef.hidden = afterDotsRef.hidden //Условие для ссылки на последнюю страницу такое же, как и для afterDotsRef.hidden. Нет троеточия - нет смысла отображать ссылку на последнюю страницу;
+
+  btns.forEach(el => el.classList.remove('pagination--current'));
+  btns.forEach(el => {
+    if (el.textContent == pageNumber) {
+      el.classList.add('pagination--current');
+    }
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  // movieArr(currentPage).then(res => render(res));
 }
+
+window.render = render;
+
+// export function paginationRender(fetchFunction) {
+//   // gallery.innerHTML = '';
+//   // const funct = apiRequest.fetchTrendingMovies();
+//   const lang = localStorage.getItem('language');
+//   console.log('Pagination', fetchFunctions, apiRequest.genre);
+//   apiRequest.pageNumber = currentPage;
+//   fetchFunction().then(res => {
+//     renderList(transformObj(res, lang));
+//   });
+//   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+//   // movieArr(currentPage).then(res => render(res));
+// }
 
 let pageSize = 9;
 
@@ -155,4 +135,4 @@ function defineResultsPerPage() {
   return pageSize;
 }
 
-export { currentPage, defineResultsPerPage };
+export { currentPage, defineResultsPerPage, firstPage };

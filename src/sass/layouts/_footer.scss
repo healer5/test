@@ -1,22 +1,22 @@
 .footer {
-background-color: white;
-color: #545454;
-padding-top: 30px;
-padding-bottom: 28px;
-transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: white;
+    color: #545454;
+    padding-top: 30px;
+    padding-bottom: 28px;
+    transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+        color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-text_last,
 .footer-text_link {
-    color:#545454;
+    color: #545454;
 }
 
 .footer-text_link:hover,
 .footer-text_link:focus {
     color: #FF6B08;
     transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-text_last {
@@ -38,8 +38,15 @@ color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
 .footer-text_icon {
     margin: 0 10px;
+    animation: Scale 0.7s ease infinite alternate;
+
+    @keyframes Scale {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1.5);
+        }
+    }
 }
-
-
-
-

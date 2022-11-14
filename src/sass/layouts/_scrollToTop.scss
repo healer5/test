@@ -1,50 +1,85 @@
 .scroll-up {
-    position: sticky;
-    bottom: 50px;
-    z-index: 1000;
-    width: 50px;
-    height: 50px;
-    margin-left: 100%;
-    color: #dcdcdc;
-    cursor: pointer;
-    visibility: hidden;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 4px #dcdcdc;
-    opacity: 0;
-    transition: 0.2s;
-    transform: translateY(25px);
-}
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    z-index: 2;
 
-.scroll-up::before {
-    position: absolute;
-    top: 0;
-    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
-    font-size: 30px;
-    font-weight: 500;
-    content: "\21E7";
+
+    width: 50px;
+    height: 50px;
+    fill: #d1d0ce;
+
+    cursor: pointer;
+    // visibility: hidden;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 3px #d1d0ce;
+    opacity: 0;
+    transform: translateY(130px);
+
+    transition-property: fill, opacity, transform;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media screen and (min-width: $tablet) {
+        right: 30px;
+        bottom: 60px;
+
+        width: 50px;
+        height: 50px;
+        transform: translateY(120px);
+    }
+
+    @media screen and (min-width: $desktop) {
+        right: 40px;
+        bottom: 40px;
+
+        width: 50px;
+        height: 50px;
+        transform: translateY(100px);
+    }
 }
 
-.scroll-up:hover {
-    color: #ff6b08;
+.scroll-up:hover,
+.scroll-up:focus {
+    fill: #ff6b01;
+}
+
+// .scroll-up__icon-rotate{
+//     transform: rotate(90deg);
+// }
+.scroll-up__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // transform: ;
+    transform: rotate(-0.25turn) translate(50%, -50%);
+
+    width: 20px;
+    height: 20px;
+
+    @media screen and (min-width: $tablet) {
+        width: 25px;
+        height: 25px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 .scroll-up--active {
-    visibility: visible;
+    // visibility: visible;
     opacity: 1;
     transform: translateY(0);
-
 }
 
-.scroll-up_svg-path {
-    box-sizing: border-box;
+.scroll-up__sircle-path {
     fill: none;
-    stroke: #ff6b08;
+    stroke: #ff6b01;
     stroke-width: 4px;
-    transition: 0.2s;
-
+    transition-duration: 250ms;
 }

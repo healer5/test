@@ -4,13 +4,17 @@
 
 
     <!-- Scroll to top -->
-      <div class="scroll-up">
-        <svg class="scroll-up_svg" viewBox="-2 -2 52 52">
-          <path class="scroll-up_svg-path" d="M24,0
+    <div class="scroll-up">
+      <svg class="scroll-up__sircle" viewBox="-2 -2 52 52">
+        <path class="scroll-up__sircle-path" d="
+          M24,0
           a24,24 0 0,1 0,48
           a24,24 0 0,1 0,-48" />
-        </svg>
-      </div>
+      </svg>
+      <svg class="scroll-up__icon">
+        <use class="scroll-up__icon-rotate" href="./images/sprite.svg#icon-arrow-up"></use>
+      </svg>
+    </div>
     <!-- Scroll to top -->
 
   <div class="pagination-container">
@@ -27,7 +31,7 @@
     <button class="pagination-button" data-index="4">4</button>
     <button class="pagination-button" data-index="5">5</button>
     <span class="dots" id="after">...</span>
-    <button class="pagination-button last-button">1000</button>
+    <button class="pagination-button last-button">100</button>
     <button class="pagination-button arrow-right">
       <!-- <svg class="icon-arrow-right" width="40" height="40">
         <use href="./images/sprite.svg#icon-arrow-right"></use>

@@ -9,9 +9,9 @@ if (!refs.lisrTopFilms) {
   return;
 }
 
-const API_KEY = '77e7936073a1f82fbc0d3a17a985fb5b';
+const API_KEY = '0a4aab5daca4d3b8b09b771948ad9265';
 const URL = 'https://api.themoviedb.org/3';
-const API_URL = `${URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`;
+const API_URL = `${URL}/movie/upcoming?api_key=${API_KEY}`;
 const IMG = 'https://image.tmdb.org/t/p/w500';
 
 async function getMovies() {
@@ -40,12 +40,10 @@ async function render(data) {
 }
 
 const glide = new Glide('.glide', {
-  type: 'carousel',
+  type: 'slider',
   startAt: 0,
   perView: 10,
-  autoplay: 1500,
-  // animationDuration: 2000,
-  gap: 10,
+  autoplay: 3000,
   hoverpause: true,
   bound: true,
   breakpoints: {

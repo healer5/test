@@ -1,23 +1,59 @@
-<div class="backdrop" data-modal>
-  <div class="modal-container">
-    <button type="button" class="modal-close-btn" data-modal-close>
+<div class="backdrop visually-hidden" data-modal>
+  <div class="modal-container visually-hidden">
+    <div class="modal-close-btn" data-modal-close>
       <svg class="modal-icon" width="14" height="14">
         <use href="./images/sprite.svg#icon-close_24px"></use>
       </svg>
-    </button>
-    <!-- Сюда Идёт основная информация о фильме из hbs -->
-    <div class="modal-info"></div>
-    <div class="add-btns">
-      <button type="button" class="watch_btn modal-btn">
-        <span>add to Watched</span>
-      </button>
-      <button type="button" class="queue_btn modal-btn">
-        <span>add to queue</span>
-      </button>
     </div>
-    <!-- <div class="add-btns">
-      <button type="button" class="watch_btn modal-btn">add to Watched</button>
-      <button type="button" class="queue_btn modal-btn">add to queue</button>
-    </div> -->
+    <!-- Сюда Идёт основная информация о фильме из hbs -->
+    <div class="modal-info">
+      <div class="info-wraper">
+        <img
+          class="image js-modal-img"
+          src="./images/sprite.svg#icon-close_24px"
+          alt="{{title}}"
+        />
+
+        <div class="film__information">
+          <div>
+            <h2 class="film__title js-title"></h2>
+            <ul>
+              <li class="film__item">
+                <p class="film__details js-votes">Vote / Votes</p>
+                <p class="film__info--upper">
+                  <span class="film__rating--orange js-vote-average"></span>
+                  <span class="film__rating--divider"> / </span>
+                  <span class="vote-count js-vote-count"></span>
+                </p>
+              </li>
+              <li class="film__item">
+                <p class="film__details js-popularity">Popularity</p>
+                <p class="film__info--upper js-popularity-value"></p>
+              </li>
+              <li class="film__item">
+                <p class="film__details js-original-title">Original title</p>
+                <p class="js-original-title-value"></p>
+              </li>
+              <li class="film__item">
+                <p class="film__details js-genres">Genre</p>
+                <p class="film__info js-genres-value"></p>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="film__about__title js-about">About</h3>
+            <p class="film__about__text"></p>
+          </div>
+          <div class="add-btns">
+            <button type="button" class="watch_btn modal-btn js-watch-btn">
+              <span></span>
+            </button>
+            <button type="button" class="queue_btn modal-btn js-queue-btn">
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

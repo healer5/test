@@ -1,7 +1,8 @@
 {{#each this}}
-  <li class='search-form-list__item'>
+  <li class='search-form-list__item' id='{{id}}'>
     <div class='search-form-list__thumb'>
       <img
+        class='search-form-list__img'
         src='{{poster_path}}'
         alt='poster path of {{title}}'
         loading='lazy'
@@ -9,8 +10,8 @@
 
     </div>
     <div class='search-form-list__info'>
-      <h3>{{title}}</h3>
-      <p>{{release_date}}</p>
+      <h3 class='search-form-list__title'>{{title}}</h3>
+      <p class='search-form-list__date'>{{release_date}}</p>
     </div>
   </li>
 {{/each}}

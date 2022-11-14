@@ -72,75 +72,12 @@
   }
 }
 
-.header-library__links {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.header-library__tittle {
-  display: none;
-  margin: 0;
-
-  @media screen and (min-width: $tablet) {
-    margin-left: 10px;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 1.17;
-    color: $header-text-color;
-    display: flex;
-  }
-}
-
-.header-library__icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  scale: 1;
-  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  animation: scale-logo 2000ms infinite linear;
-
-  @keyframes scale-logo {
-    0% {
-      transform: scale(0.75) rotate(180deg);
-    }
-
-    50% {
-      transform: scale(1.25);
-    }
-
-    100% {
-      transform: scale(0.75) rotate(360deg);
-    }
-  }
-
-  @include tablet {
-    margin-left: 17px;
-  }
-}
-
-.header-library__link {
-  position: relative;
-  color: $header-text-color;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
-  text-transform: uppercase;
-  margin-left: auto;
-}
-
-.header-library__link--active {
-  border-bottom: 3px solid #ff001b;
-}
-
-.header-library__link:last-child {
-  margin-left: 40px;
-}
 
 .header-library__btn-list {
   display: flex;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
+  justify-content: center;
+  margin-top: 50px;
 
   @media screen and (min-width: 768px) {
     justify-content: center;
@@ -185,54 +122,6 @@
 }
 
 .header-library__btn:last-child {
-  margin-right: 0;
+  margin-left: 20px;
 }
 
-.nav-library {
-  display: flex;
-  align-items: center;
-  padding: 40px 20px 40px 20px;
-}
-
-.header-library__list {
-  display: flex;
-  margin-left: auto;
-}
-
-.nav-library__logo {
-  display: flex;
-  align-items: center;
-}
-
-// Ще обдумати, як це зробити
-.plug {
-  // display: block;
-  padding-top: 30px;
-  // align-content: center;
-  // align-items: center;
-
-  @media screen and (min-width: 1280px) {
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-}
-
-.plug-img {
-  width: 130px;
-
-  @media screen and (min-width: 768px) {
-    width: 300px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 350px;
-  }
-}
-
-.plug-text {
-  font-size: 14px;
-
-  @media screen and (min-width: 768px) {
-    font-size: 28px;
-  }
-}

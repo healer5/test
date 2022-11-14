@@ -1,18 +1,24 @@
 import { genres, genresUa } from './genres';
 
 export function idToGenre(id) {
-  const ar = [];
+  let ar = [];
   genres.map(el => {
-    if (ar.length >= 2) return;
+    if (ar.length >= 3) {
+      ar = [ar[0], ar[1], 'other'];
+      return;
+    }
     if (id.includes(el.id)) ar.push(el.name);
   });
   return ar;
 }
 
 export function idToGenreUa(id) {
-  const ar = [];
+  let ar = [];
   genresUa.map(el => {
-    if (ar.length >= 2) return;
+    if (ar.length >= 3) {
+      ar = [ar[0], ar[1], 'Інші'];
+      return;
+    }
     if (id.includes(el.id)) ar.push(el.name);
   });
   return ar;
